@@ -30,4 +30,17 @@ testCases = [-10, 123, 121, 676756767, 1293128937123]
 for num in testCases:
     print(isPalindrome(num))
 
+# Valid Parenthesis
+
+def isValid(s: str) -> bool:
+        Map = {")" : "(" , "]" : "[", "}" : "{"}
+        stack = []
+        for c in s: 
+             if c not in Map:
+                  stack.append(c)
+                  continue
+             elif not stack or stack[-1] != Map[c]:
+                return False
+             stack.pop()
+        return not stack
 
