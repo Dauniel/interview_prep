@@ -153,9 +153,32 @@ print(romanToInt("XXX"))
 print(romanToInt("IV"))
 print(romanToInt("MX"))
 
+def groupAnagrams(strs: list[str]) -> list[list[str]]:
+    anagrams = dict()
+    for s in strs:
+        sortedWord = "".join(sorted(s))
+        if sortedWord not in anagrams:
+            anagrams[sortedWord] = []
+        anagrams[sortedWord].append(s)
+    ans = []
+    for anagram in anagrams:
+        ans.append(anagrams[anagram])
+    return ans
 
-# testing git default configuration
-# testing again
-# testing again lol
-# testing again lolol
-# final testing and i go sleep cuz my eyes are tired
+print(groupAnagrams(["cat", "tac", "act", "bat", "tab", "zebra", "lion", ""]))
+
+def topKfrequent(nums: list[int], k: int) -> list[int]:
+    count = dict()
+    freq = []
+    for i in range(len(nums) + 1):
+        freq[i].append([])
+    for num in nums:
+        count[num] = 1 + count.get(num, 0)
+    for value, count in count.items():
+        freq[count].append(value)
+    res = []
+    for i in range(len(freq) - 1, 0, -1):
+        for num in freq[i]:
+            res.append(num)
+            if len(res) == k:
+                return res
