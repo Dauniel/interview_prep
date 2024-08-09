@@ -16,9 +16,9 @@ print(twoSum([3, 3], 6))          # Output: [0, 1]
 print(twoSum([1, 2, 3, 4, 5], 9)) # Output: [3, 4]
 print(twoSum([1, 2, 3, 4, 5], 10))# Output: []
 
-# PALINDROME 
+# Palindrome for Number
 
-def isPalindrome(x: int) -> bool:
+def isPalindromeNumber(x: int) -> bool:
     if x < 0: return False
     reversed_num = 0
     temp = x
@@ -29,7 +29,33 @@ def isPalindrome(x: int) -> bool:
 
 testCases = [-10, 123, 121, 676756767, 1293128937123]
 for num in testCases:
-    print(isPalindrome(num))
+    print(isPalindromeNumber(num))
+
+# Palindrome for Alphanumeric Lazy Version
+
+def isPalindromeLazy(s: str) -> bool:
+    newStr = ""
+    for c in s:
+        if c.isalnum():
+            newStr += c.lower()
+    return newStr == str[::-1]
+
+# Palindrome for Alphanumeric Good Version
+def isPalindrome(s: str) -> bool:
+    l, r = 0, len(s) - 1
+    while l < r:
+        while l < r and not alphaNum(s[l]):
+            l += 1
+        while r > 1 and not alphaNum(s[r]):
+            r -= 1
+        if s[l] != s[r]:
+            return False
+        l, r = l + 1, r - 1
+    return True
+def alphaNum(self, c):
+    return (ord('A') <= ord(c) <= ord('Z') or 
+            ord('a') <= ord(c) <= ord('z') or 
+            ord('0') <= ord(c) <= ord('9'))
 
 # Valid Parenthesis
 
@@ -80,6 +106,8 @@ print(longestCommonPrefix(["flower","flow","flight"]))
 print(longestCommonPrefix(["dog","racecar","car"]))
 print(longestCommonPrefix(["racecar","racecar"]))
 
+
+# Merge Two Lists
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -153,6 +181,7 @@ print(romanToInt("XXX"))
 print(romanToInt("IV"))
 print(romanToInt("MX"))
 
+# Group Anagrams 
 def groupAnagrams(strs: list[str]) -> list[list[str]]:
     anagrams = dict()
     for s in strs:
@@ -165,6 +194,7 @@ def groupAnagrams(strs: list[str]) -> list[list[str]]:
         ans.append(anagrams[anagram])
     return ans
 
+# Top K Frequent Elements
 print(groupAnagrams(["cat", "tac", "act", "bat", "tab", "zebra", "lion", ""]))
 
 def topKfrequent(nums: list[int], k: int) -> list[int]:
@@ -182,3 +212,31 @@ def topKfrequent(nums: list[int], k: int) -> list[int]:
             res.append(num)
             if len(res) == k:
                 return res
+
+# Length of Longest Substring
+def lengthOfLongestSubstring(s: str) -> int:
+    charSet = set()
+    l = 0 
+    ans = 0 
+    for r in range(len(s)):
+        while s[r] in charSet:
+            charSet.remove(s[l])
+            l += 1
+        charSet.add(s[r])
+        ans = max(ans, r - l + 1)
+    return ans
+
+# Longest Consecutive Sequence
+def longestConsecutiveSequence(nums: list[int]) -> int:
+    numSet = set(nums)
+    ans = 0
+    for num in nums:
+        if num - 1 not in numSet:
+            length = 1
+            while num + length in numSet:
+                length += 1
+            ans = max(ans, length)
+    return ans
+
+
+
