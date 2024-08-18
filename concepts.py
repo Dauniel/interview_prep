@@ -17,3 +17,13 @@ def fib(n):
 x = fib(5)
 print(x)
 
+s = "abc"
+
+i = 0
+j = 1
+
+
+s = "123456789"
+# starting at index 1 and ending at index 4 (not including index 5)
+print(s[1:5])
+
