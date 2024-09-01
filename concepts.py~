@@ -53,6 +53,10 @@ check = dict()
 
 print(check)
 
+print(19642.20 / 9)
+
+print(12989.16 / 9)
+
 x = [0, 1]
 
 u, v = x
@@ -114,15 +118,6 @@ def is_alpha(s: str) -> int: # returning 0 if its alpha and returning the index 
 print("Is the string in order")
 print(is_alpha("abc"))
 print(is_alpha("abdc"))
-
-def is_alpha_2(s: str) -> bool:
-    for i in range(len(s) - 1, 0, -1):
-        if s[i] < s[i - 1]:
-            return False
-    return True
-print("check if string is in alpha order")
-print(is_alpha_2("abc"))
-print(is_alpha_2("abdc"))
 
 def length_of_longest_substring(s: str) -> int:
     charSet = set()
