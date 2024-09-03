@@ -2,6 +2,11 @@ class listNode:
     def __init__(self, value: int = 0, next = None):
         self.value = value
         self.next = next
+    def print(self):
+        cur = self
+        while cur:
+            print(cur.value, end = "->" if cur.next else "\n")
+            cur = cur.next
 
 node1 = listNode(2)
 node2 = listNode(4)
@@ -11,11 +16,7 @@ node1.next = node2
 node2.next = node3
 node3.next = None
 
-cur = node1
-
-while cur:
-    print(cur.value)
-    cur = cur.next
+node1.print()
 
 x = [1,2,3,4,5]
 print(x[:4])
@@ -95,10 +96,16 @@ def is_palindrome(s: str) -> bool:
             right -=1
     return True
 
+print("palindrom checking lolz")
+s = "abc"
+print(s[::-1])
+print(s[0:0])
+
+
 def palindromic_substrings(s: str) -> list[str]:
     palindromes = []
     for i in range(len(s)):
-        for j in range(i + 2, len(s) + 1):
+        for j in range(i + 1, len(s) + 1):
             if is_palindrome(s[i:j]):
                 palindromes.append(s[i:j])
     return palindromes
