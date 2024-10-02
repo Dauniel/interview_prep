@@ -61,26 +61,7 @@ class Solution:
 				res.append(num)
 				if len(res) == k:
 					return res
-    
-    def encode_string(self, strs: list[str]) -> str:
-        return -1 
 
-    def decode_string(self, s: str) -> list[str]:
-        return -1
-
-    def productExceptSelf(self, nums: list[int]) -> int:
-       return -1
-
-
-    def longestConsecutiveSequence(self, nums: list[int]) -> int:
-        return -1
-
-    def validPalindrome(self, s: str) -> bool:
-        return - 1
-        def isAlpha(self, c: str) -> bool:
-            return -1
-
-       
 
 solution = Solution()
 
